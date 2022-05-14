@@ -37,12 +37,15 @@ class CategoryController extends Controller {
     public function store(Request $request) {
 
         $rules = [
-            "title" => "required|min:2"
+            "name" => "required|min:2",
+            "description" => "description|min:5",
         ];
 
         $messages = [
-            "title.required" => "O campo título deve ser preenchido",
-            "title.min" => "O campo título deve ter pelo menos 2 caracteres"
+            "name.required" => "O campo nome deve ser preenchido",
+            "name.min" => "O campo nome deve ter pelo menos 2 caracteres",
+            "description.min" => "O campo descrição deve ter pelo menos 5 caracteres"
+
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);

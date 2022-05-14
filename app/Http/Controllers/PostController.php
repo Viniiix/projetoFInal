@@ -9,36 +9,35 @@ use App\Category;
 use App\Product;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller {
+class PostController extends Controller {
 
     public function index() {
-        $products = Product::all();
+        $post = Post::all();
         
-        return view("products", [
-            "products" => $products
+        return view("posts", [
+            "posts" => $posts
         ]);
     }
 
     public function create() {
-        $product = new Product(); 
-        $product->active=1;
-        $product->featured=1;
+        $post = new Post(); 
+        $post->active=1;
 
         $categories = Category::all();
 
-        return view("product", [
-            "product" => $product,
+        return view("posts", [
+            "posts" => $post,
             "categories" => $categories
         ]);
     }
 
     public function edit($id) {
-        $product = Product::find($id);
+        $post = Post::find($id);
 
         $categories = Category::all();  //Obtem todas as categorias
 
-        return view("product", [    //retorna as informações do produto e da categoria
-            "product" => $product,
+        return view("post", [    //retorna as informações do post e da categoria
+            "post" => $post,
             "categories" => $categories
         ]);
     }
@@ -74,17 +73,13 @@ class ProductController extends Controller {
         }
 
 
-        $product = new Product();
+        $product = new Post();
         $product->category_id = $request->input("category_id");
-        $product->name = $request->input("name");
-        $product->price = $request->input("price");
-        $product->minimum_quantity = $request->input("minimum_quantity");
-        $product->description = $request->input("description");
-        $product->instructions = $request->input("instructions");
-        $product->link_file = $request->input("link_file");
+        $product->post_date = $request->input("post_date");
+        $product->title = $request->input("title");
+        $product->summary = $request->input("summary");
+        $product->text = $request->input("text");
         $product->active = $request->input("active");
-        $product->featured = $request->input("featured");
-        $product->url_image = "";
         $product->save();
 
         return redirect()->route("produtos");

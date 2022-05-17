@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 
 use App\Category;
-use App\Product;
+use App\Post;
 use App\Http\Controllers\Controller;
 
 class PostController extends Controller {
@@ -46,94 +46,89 @@ class PostController extends Controller {
 
         $rules = [
             "category_id" => "required|exists:categories,id",
-            "name" => "required|min:2",
-            "price" => "required|numeric",
-            "minimum_quantity" => "required|integer",
-            "description" => "required"
+            "title" => "required|min:5",
+            "summary" => "required|min:20",
+            "text" => "required|min:50",
+            "post_date" => "required"
         ];
 
         $messages = [
-            "name.required" => "O campo nome deve ser preenchido",
-            "name.min" => "O campo nome deve ter pelo menos 2 caracteres",
+            "title.required" => "O campo título deve ser preenchido",
+            "title.min" => "O campo título deve ter pelo menos 5 caracteres",
             "category_id.required" => "O campo categoria deve ser preenchido",
             "category_id.exists" => "Você deve selecionar uma categoria válida",
-            "price.required" => "O campo preço deve ser preenchido com um valor maior que zero",
-            "price.numeric" => "O campo preço deve ser númerico",
-            "minimum_quantity.required" => "O campo quantidade mínima para compra deve ser preenchido",
-            "minimum_quantity.integer" => "O campo quantidade mínima para compra deve ser um número inteiro",
-            "description.required" => "O campo descrição deve ser preenchido"
+            "summary.required" => "O campo resumo deve ser preenchido",
+            "summary.min" => "O campo resumo deve ter pelo menos 20 caracteres",
+            "text.required" => "O campo texto deve ser preenchido",
+            "text.min" => "O campo texto deve ter pelo menos 50 caracteres",
+            "post_date" => "O campo data da postagem deve ser preenchido"
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if($validator->fails()) {
-            return redirect()->route("produtosnovo")
+            return redirect()->route("postsnovo")
             ->withErrors($validator)
             ->withInput();
         }
 
 
-        $product = new Post();
-        $product->category_id = $request->input("category_id");
-        $product->post_date = $request->input("post_date");
-        $product->title = $request->input("title");
-        $product->summary = $request->input("summary");
-        $product->text = $request->input("text");
-        $product->active = $request->input("active");
-        $product->save();
+        $post = new Post();
+        $post->category_id = $request->input("category_id");
+        $post->post_date = $request->input("post_date");
+        $post->title = $request->input("title");
+        $post->summary = $request->input("summary");
+        $post->text = $request->input("text");
+        $post->active = $request->input("active");
+        $post->save();
 
-        return redirect()->route("produtos");
+        return redirect()->route("posts");
     }
 
     public function update($id, Request $request) {
         $rules = [
             "category_id" => "required|exists:categories,id",
-            "name" => "required|min:2",
-            "price" => "required|numeric",
-            "minimum_quantity" => "required|integer",
-            "description" => "required"
+            "title" => "required|min:5",
+            "summary" => "required|min:20",
+            "text" => "required|min:50",
+            "post_date" => "required"
         ];
 
         $messages = [
-            "name.required" => "O campo nome deve ser preenchido",
-            "name.min" => "O campo nome deve ter pelo menos 2 caracteres",
+            "title.required" => "O campo título deve ser preenchido",
+            "title.min" => "O campo título deve ter pelo menos 5 caracteres",
             "category_id.required" => "O campo categoria deve ser preenchido",
             "category_id.exists" => "Você deve selecionar uma categoria válida",
-            "price.required" => "O campo preço deve ser preenchido com um valor maior que zero",
-            "price.numeric" => "O campo preço deve ser númerico",
-            "minimum_quantity.required" => "O campo quantidade mínima para compra deve ser preenchido",
-            "minimum_quantity.integer" => "O campo quantidade mínima para compra deve ser um número inteiro",
-            "description.required" => "O campo descrição deve ser preenchido"
+            "summary.required" => "O campo resumo deve ser preenchido",
+            "summary.min" => "O campo resumo deve ter pelo menos 20 caracteres",
+            "text.required" => "O campo texto deve ser preenchido",
+            "text.min" => "O campo texto deve ter pelo menos 50 caracteres",
+            "post_date" => "O campo data da postagem deve ser preenchido"
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if($validator->fails()) {
-            return redirect()->route("produtosform", ["id" => $id])
+            return redirect()->route("postsform", ["id" => $id])
             ->withErrors($validator)
             ->withInput();
         }
 
-        $product = Product::find($id);
-        $product->category_id = $request->input("category_id");
-        $product->name = $request->input("name");
-        $product->price = $request->input("price");
-        $product->minimum_quantity = $request->input("minimum_quantity");
-        $product->description = $request->input("description");
-        $product->instructions = $request->input("instructions");
-        $product->link_file = $request->input("link_file");
-        $product->active = $request->input("active");
-        $product->featured = $request->input("featured");
-        $product->url_image = "";
-        $product->save();
+        $post = Post::find($id);
+        $post->category_id = $request->input("category_id");
+        $post->post_date = $request->input("post_date");
+        $post->title = $request->input("title");
+        $post->summary = $request->input("summary");
+        $post->text = $request->input("text");
+        $post->save();
 
-        return redirect()->route("produtos");
+        return redirect()->route("posts");
     }
 
     public function destroy($id) {
-        $product = Product::find($id);
-        $product->delete();
+        $post = Post::find($id);
+        $post->delete();
 
-        return redirect()->route("produtos");
+        return redirect()->route("posts");
     }
 }

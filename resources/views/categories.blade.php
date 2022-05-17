@@ -9,13 +9,17 @@
             <table class="table table-hover talbe-bordered">
                 <tr>
                     <th>ID</th>
-                    <th>Titulo</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Ativo</th>
                     <th>Ações</th>
                 </tr>
                 @foreach($categories as $category)
                 <tr>
                     <td>{{ $category->id }}</td>
-                    <td>{{ $category->title }}</td>
+                    <td>{{ $category->name }}</td>
+                    <td>{{ $category->description }}</td>
+                    <td>{{ $category->active === 1 ? 'Sim' : 'Não'}}</td>
                     <td>
                         <form action="{{ route('categoriasdelete', ['id'=> $category->id]) }}" method="POST">
                             <a href="{{ route('categoriasform', ['id'=> $category->id]) }}" class="btn btn-info">Editar</a>

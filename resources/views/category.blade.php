@@ -15,11 +15,29 @@
         {{ csrf_field() }}
         <input type="hidden" name="id" value="{{ $category->id }}">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="form-group">
-                <label for="title">Título</label>
-                <input type="text" id="title" name="title" value="{{$category->title}}" class="form-control">
-                    
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" value="{{$category->name}}" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                <label for="description">Descrição</label>
+                <input type="text" id="description" name="description" value="{{$category->description}}" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                <label for="active">Ativo</label>
+                    <select name="active" id="active" value="{{$category->active}}" class="form-control">
+                        <option value="0" {{ !$category->active ? 'selected' : ''}}>Não</option>
+                        <option value="1" {{ $category->active ? 'selected' : ''}}>Sim</option>
+                    </select>
                 </div>
             </div>
         </div>

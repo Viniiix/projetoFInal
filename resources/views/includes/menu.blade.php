@@ -14,7 +14,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('posts') }}" class="nav-link">
-                    Produtos
+                    Postagens
                 </a>
             </li>
         </ul>

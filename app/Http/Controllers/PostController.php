@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class PostController extends Controller {
 
     public function index() {
-        $post = Post::all();
+        $posts = Post::all();
         
         return view("posts", [
             "posts" => $posts
@@ -25,8 +25,8 @@ class PostController extends Controller {
 
         $categories = Category::all();
 
-        return view("posts", [
-            "posts" => $post,
+        return view("post", [
+            "post" => $post,
             "categories" => $categories
         ]);
     }

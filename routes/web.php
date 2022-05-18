@@ -12,12 +12,12 @@ Route::prefix('categorias')->group(function() {
 });
 
 Route::prefix('posts')->group(function() {
-    Route::get("", "ProductController@index")->name("posts");
-    Route::get("novo", "ProductController@create")->name("postsnovo");
-    Route::get("{id}", "ProductController@edit")->name("postsform");
-    Route::post("", "ProductController@store")->name("postsinsert");
-    Route::put("{id}", "ProductController@update")->name("postsupdate");
-    Route::delete("{id}", "ProductController@destroy")->name("postsdelete");
+    Route::get("", "PostController@index")->name("posts");
+    Route::get("novo", "PostController@create")->name("postsnovo");
+    Route::get("{id}", "PostController@edit")->name("postsform");
+    Route::post("", "PostController@store")->name("postsinsert");
+    Route::put("{id}", "PostController@update")->name("postsupdate");
+    Route::delete("{id}", "PostController@destroy")->name("postsdelete");
 });
 
 // Route::prefix('usuarios')->middleware('auth')->group(function() {

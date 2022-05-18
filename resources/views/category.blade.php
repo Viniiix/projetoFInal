@@ -34,7 +34,7 @@
             <div class="col-lg-3">
                 <div class="form-group">
                 <label for="active">Ativo</label>
-                    <select name="active" id="active" value="{{$category->active}}" class="form-control">
+                    <select name="active" id="active" class="form-control">
                         <option value="0" {{ !$category->active ? 'selected' : ''}}>Não</option>
                         <option value="1" {{ $category->active ? 'selected' : ''}}>Sim</option>
                     </select>

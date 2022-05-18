@@ -45,14 +45,15 @@ class PostController extends Controller {
     public function store(Request $request) {
 
         $rules = [
+            "post_date" => "required",
             "category_id" => "required|exists:categories,id",
             "title" => "required|min:5",
             "summary" => "required|min:20",
-            "text" => "required|min:50",
-            "post_date" => "required"
+            "text" => "required|min:50"
         ];
 
         $messages = [
+            "post_date.required" => "O campo data da postagem deve ser preenchido",
             "title.required" => "O campo título deve ser preenchido",
             "title.min" => "O campo título deve ter pelo menos 5 caracteres",
             "category_id.required" => "O campo categoria deve ser preenchido",
@@ -60,8 +61,7 @@ class PostController extends Controller {
             "summary.required" => "O campo resumo deve ser preenchido",
             "summary.min" => "O campo resumo deve ter pelo menos 20 caracteres",
             "text.required" => "O campo texto deve ser preenchido",
-            "text.min" => "O campo texto deve ter pelo menos 50 caracteres",
-            "post_date.required" => "O campo data da postagem deve ser preenchido"
+            "text.min" => "O campo texto deve ter pelo menos 50 caracteres"
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -87,14 +87,15 @@ class PostController extends Controller {
 
     public function update($id, Request $request) {
         $rules = [
+            "post_date" => "required",
             "category_id" => "required|exists:categories,id",
             "title" => "required|min:5",
             "summary" => "required|min:20",
-            "text" => "required|min:50",
-            "post_date" => "required"
+            "text" => "required|min:50"
         ];
 
         $messages = [
+            "post_date.required" => "O campo data da postagem deve ser preenchido",
             "title.required" => "O campo título deve ser preenchido",
             "title.min" => "O campo título deve ter pelo menos 5 caracteres",
             "category_id.required" => "O campo categoria deve ser preenchido",
@@ -102,8 +103,7 @@ class PostController extends Controller {
             "summary.required" => "O campo resumo deve ser preenchido",
             "summary.min" => "O campo resumo deve ter pelo menos 20 caracteres",
             "text.required" => "O campo texto deve ser preenchido",
-            "text.min" => "O campo texto deve ter pelo menos 50 caracteres",
-            "post_date.required" => "O campo data da postagem deve ser preenchido"
+            "text.min" => "O campo texto deve ter pelo menos 50 caracteres"
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);

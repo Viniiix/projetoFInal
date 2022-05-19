@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 
-    <title>Cadastro de Produtos | @yield('title')</title>
+    <title> @yield('title')</title>
 </head>
 <body>
     <main class="container mt-3">

@@ -20,6 +20,11 @@ Route::prefix('posts')->group(function() {
     Route::delete("{id}", "PostController@destroy")->name("postsdelete");
 });
 
+Route::prefix('index')->group(function() {
+    Route::get("", "IndexController@index")->name("index");
+    Route::get("{id}", "IndexController@postagem")->name("postagem");
+});
+
 // Route::prefix('usuarios')->middleware('auth')->group(function() {
 //     Route::get("", "UserController@index")->name("usuarios");
 //     Route::get("novo", "UserController@create")->name("usuariosnovo");

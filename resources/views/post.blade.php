@@ -18,7 +18,7 @@
             <div class="col-lg-6">
                 <div class="form-group">
                 <label for="post_date">Data da Postagem</label>
-                <input type="datetime-local" class="form-control" id="post_date" name="post_date" value="{{ $post->post_date }}">
+                <input type="date" class="form-control" id="post_date" name="post_date" value="{{ $post->post_date }}">
             </div>
         </div>
             <div class="col-lg-6">

@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/produtos';
+    protected $redirectTo = '/posts';
 
     /**
      * Create a new controller instance.

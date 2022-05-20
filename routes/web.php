@@ -2,7 +2,7 @@
 
 //Route::get("categorias", "CategoryController@index");
 
-Route::prefix('categorias')->group(function() {
+Route::prefix('categorias')->middleware('auth')->group(function() {
     Route::get("", "CategoryController@index")->name("categorias");
     Route::get("novo", "CategoryController@create")->name("categoriasnovo");
     Route::get("{id}", "CategoryController@edit")->name("categoriasform");
@@ -11,7 +11,7 @@ Route::prefix('categorias')->group(function() {
     Route::delete("{id}", "CategoryController@destroy")->name("categoriasdelete");
 });
 
-Route::prefix('posts')->group(function() {
+Route::prefix('posts')->middleware('auth')->group(function() {
     Route::get("", "PostController@index")->name("posts");
     Route::get("novo", "PostController@create")->name("postsnovo");
     Route::get("{id}", "PostController@edit")->name("postsform");
@@ -22,7 +22,7 @@ Route::prefix('posts')->group(function() {
 
 Route::prefix('index')->group(function() {
     Route::get("", "IndexController@index")->name("index");
-    Route::get("{id}", "IndexController@postagem")->name("postagem");
+    // Route::get("login", "IndexController@login")->name("login");
 });
 
 // Route::prefix('usuarios')->middleware('auth')->group(function() {
@@ -33,6 +33,9 @@ Route::prefix('index')->group(function() {
 //     Route::put("{id}", "UserController@update")->name("usuariosupdate");
 //     Route::delete("{id}", "UserController@destroy")->name("usuariosdelete");
 // });
-// Auth::routes();
 
-// Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Auth::routes();
+
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+

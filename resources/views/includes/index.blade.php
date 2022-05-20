@@ -1,4 +1,4 @@
-<nav class="mb-2 navbar-expand-lg navbar-light bg-light">
+<nav class="col-3 mb-2 navbar-expand-lg navbar-light bg-light">
     <a href="{{ route('index') }}" class="navbar-brand">Home</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nbContent">
@@ -12,12 +12,7 @@
                     Postagens
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('categorias') }}" class="nav-link">
-                    Categorias
-                </a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item mb-2">
                 <a href="{{ route('categorias') }}" class="nav-link">
                     Login
                 </a>

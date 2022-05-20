@@ -17,6 +17,11 @@
                     Postagens
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link">
+                    Logout
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

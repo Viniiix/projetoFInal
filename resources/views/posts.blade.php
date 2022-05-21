@@ -3,10 +3,19 @@
 @section('content')
     @include('includes.menu')
 
+    <style>
+        .limite{
+            max-width: 10px;
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis;
+        }
+    </style>
+
     <div class="row">
-        <div class="col">   
-            <a href="{{ route('postsnovo') }}" class="btn btn-success mb-3">Novo</a>
-            <table class="table table-hover talbe-bordered">
+        <div class="col-12">   
+            <a href="{{ route('postsnovo') }}" class="btn btn-success mb-2">Novo</a>
+            <table class="table table-hover">
                 <tr>
                     <th>Data da Postagem</th>
                     <th>Categoria</th>
@@ -14,15 +23,16 @@
                     <th>Resumo</th>
                     <th>Texto</th>
                     <th>Ativo?</th>
+                    <th>Ações</th>
                 </tr>
                 @foreach($posts as $post)
                 <tr>
-                    <tr class="table-secondary">
-                        <td>{{ $post->post_date }}</td>
-                        <td>{{ $post->category->name }}</td>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->summary }}</td>
-                        <td>{{ $post->text }}</td>
+                    <tr class="table">
+                        <td class="limite">{{ $post->post_date }}</td>
+                        <td class="limite">{{ $post->category->name }}</td>
+                        <td class="limite">{{ $post->title }}</td>
+                        <td class="limite">{{ $post->summary }}</td>
+                        <td class="limite">{{ $post->text }}</td>
                         <td>{{ $post->active == 0 ? 'Não' : 'Sim'}}</td>
                         <td>
                             <form action="{{ route('postsdelete', ['id'=> $post->id]) }}" method="POST">

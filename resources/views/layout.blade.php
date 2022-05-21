@@ -10,7 +10,7 @@
     <title> @yield('title')</title>
 </head>
 <body>
-    <main class="">
+    <main class="container">
     @yield('content')
     </main>
     <script src="{{ asset('js/jquery.min.js') }}"></script>

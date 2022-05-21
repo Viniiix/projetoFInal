@@ -40,7 +40,7 @@
             <h4 class="my-0 fw-normal">{{ $post->title }}</h4>
           </div>
           <div class="card-body">
-            <h3 class="card-title pricing-card-title limite">{{ $post->summary }}<small class="text-muted fw-light"></small></h3>
+            <h4 class="card-title pricing-card-title limite">{{ $post->summary }}<small class="text-muted fw-light"></small></h4>
             <ul class="list-unstyled mt-3 mb-4">
               <li class="list-unstyled mt-3 mb-5 limiteLi">{{ $post->text }}</li>
               <li class="limiteLi">{{ $post->category->name }}</li>

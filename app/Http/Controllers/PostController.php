@@ -72,7 +72,6 @@ class PostController extends Controller {
             ->withInput();
         }
 
-        
         $post = new Post();
         $post->category_id = $request->input("category_id");
         $post->post_date = $request->input("post_date");

@@ -22,17 +22,7 @@ Route::prefix('posts')->middleware('auth')->group(function() {
 
 Route::prefix('index')->group(function() {
     Route::get("", "IndexController@index")->name("index");
-    // Route::get("login", "IndexController@login")->name("login");
 });
-
-// Route::prefix('usuarios')->middleware('auth')->group(function() {
-//     Route::get("", "UserController@index")->name("usuarios");
-//     Route::get("novo", "UserController@create")->name("usuariosnovo");
-//     Route::get("{id}", "UserController@edit")->name("usuariosform");
-//     Route::post("", "UserController@store")->name("usuariosinsert");
-//     Route::put("{id}", "UserController@update")->name("usuariosupdate");
-//     Route::delete("{id}", "UserController@destroy")->name("usuariosdelete");
-// });
 
 Auth::routes();
 
